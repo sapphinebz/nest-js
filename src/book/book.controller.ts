@@ -14,6 +14,10 @@ export class BookController {
         bookId: 1,
         bookName: 'BookName1',
       },
+      {
+        bookId: 2,
+        bookName: 'BookName1',
+      },
     ];
   }
 }
