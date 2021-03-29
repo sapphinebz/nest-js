@@ -17,6 +17,24 @@ export class FsService {
       });
     });
   }
+
+  /**
+   * อ่านไฟล์แบบ promise
+   * @param path url ค้นหา json
+   * @returns Promise<Book[]>
+   */
+  readJSONFilePromise(path: string) {
+    return new Promise<Book[]>((resolve, reject) => {
+      fs.readFile(`${path}`, 'utf8', (err, jsonString) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(JSON.parse(jsonString));
+      });
+    });
+  }
+
   writeJSONfile(path: string, data: { [key: string]: any }) {
     return new Observable<void>((observer) => {
       fs.writeFile(`${path}`, JSON.stringify(data), 'utf-8', function (err) {

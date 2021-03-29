@@ -11,6 +11,13 @@ export class BookController {
     return this.bookService.readBooks();
   }
 
+  @Get('promise')
+  async getBooksPromise(): Promise<Book[]> {
+    const books = await this.bookService.readPromise();
+    return books;
+  }
+
+
   @Get(':id')
   getBookById(@Param('id') id: number): Observable<Book> {
     return this.bookService.findBookById(id);

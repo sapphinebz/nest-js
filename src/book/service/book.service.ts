@@ -11,6 +11,10 @@ export class BookService {
     return this.fs.readJSONFile('./book.json');
   }
 
+  readPromise() {
+    return this.fs.readJSONFilePromise('./book.json');
+  }
+
   writeBooks(data: { [key: string]: any }): Observable<void> {
     return this.fs.writeJSONfile('./book.json', data);
   }
