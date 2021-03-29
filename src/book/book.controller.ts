@@ -1,23 +1,28 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Observable } from 'rxjs';
 import { Book } from './book';
+import { BookService } from './service/book.service';
 
 @Controller('book')
 export class BookController {
+  constructor(private bookService: BookService) {}
   @Get()
-  findBookAll(): Book[] {
-    return [
-      {
-        bookId: 0,
-        bookName: 'BookName0',
-      },
-      {
-        bookId: 1,
-        bookName: 'BookName1',
-      },
-      {
-        bookId: 2,
-        bookName: 'BookName1',
-      },
-    ];
+  getBooks(): Observable<Book[]> {
+    return this.bookService.readBooks();
+  }
+
+  @Get(':id')
+  getBookById(@Param('id') id: number): Observable<Book> {
+    return this.bookService.findBookById(id);
+  }
+
+  @Post()
+  persistBook(@Body() book: Book) {
+    return this.bookService.persistBook(book);
+  }
+
+  @Delete(':id')
+  deleteBookById(@Param('id') id: number) {
+    return this.bookService.deleteBookById(id);
   }
 }
