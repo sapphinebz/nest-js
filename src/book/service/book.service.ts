@@ -11,7 +11,7 @@ export class BookService {
     return this.fs.readJSONFile('./book.json');
   }
 
-  readPromise() {
+  readBooksPromise() {
     return this.fs.readJSONFilePromise('./book.json');
   }
 

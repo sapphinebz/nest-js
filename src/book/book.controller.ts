@@ -13,7 +13,7 @@ export class BookController {
 
   @Get('promise')
   async getBooksPromise(): Promise<Book[]> {
-    const books = await this.bookService.readPromise();
+    const books = await this.bookService.readBooksPromise();
     return books;
   }
 
