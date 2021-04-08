@@ -8,6 +8,10 @@ import { Book } from '../book';
 export class BookService {
   private bookJsonFile = './book.json';
   constructor(private fs: FsService) {}
+  /**
+   * อ่านข้อมูล book จาก json
+   * @returns ค่า book ทั้งหมดจาก json
+   */
   readBooks(): Observable<Book[]> {
     return this.fs.readJSONFile(this.bookJsonFile);
   }
