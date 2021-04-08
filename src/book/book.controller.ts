@@ -13,6 +13,7 @@ export class BookController {
 
   @Get('promise')
   async getBooksPromise(): Promise<Book[]> {
+    // for MYFEATURE
     const books = await this.bookService.readBooksPromise();
     return books;
   }
