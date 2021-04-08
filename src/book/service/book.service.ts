@@ -6,17 +6,18 @@ import { Book } from '../book';
 
 @Injectable()
 export class BookService {
+  private bookJsonFile = './book.json';
   constructor(private fs: FsService) {}
   readBooks(): Observable<Book[]> {
-    return this.fs.readJSONFile('./book.json');
+    return this.fs.readJSONFile(this.bookJsonFile);
   }
 
   readBooksPromise() {
-    return this.fs.readJSONFilePromise('./book.json');
+    return this.fs.readJSONFilePromise(this.bookJsonFile);
   }
 
   writeBooks(data: { [key: string]: any }): Observable<void> {
-    return this.fs.writeJSONfile('./book.json', data);
+    return this.fs.writeJSONfile(this.bookJsonFile, data);
   }
 
   findBookById(id: number) {
