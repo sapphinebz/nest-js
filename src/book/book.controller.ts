@@ -13,12 +13,10 @@ export class BookController {
 
   @Get('promise')
   async getBooksPromise(): Promise<Book[]> {
-    // for MYFEATURE
-    // for 
+    // for MYFEATURE 
     const books = await this.bookService.readBooksPromise();
     return books;
   }
-
 
   @Get(':id')
   getBookById(@Param('id') id: number): Observable<Book> {
